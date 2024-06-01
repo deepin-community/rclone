@@ -1,0 +1,11 @@
+0001-Disable-qingstor-backend-for-now.patch
+0002-Disable-mega-backend.patch
+0003-Skip-failing-tests.patch
+0004-Disable-FTP-server-of-rclone.patch
+0005-Do-not-include-installation-instructions-in-manpage.patch
+0007-Remove-script-to-disable-possible-privacy-breach.patch
+ignore_tardigrade_backend.patch
+skip_sftp_webdav_TestIntegration.patch
+skip_network_tests.patch
+0010-Disable-oracleobjectstorage-backend.patch
+0011-Don-t-build-the-mobile-binding-bits.patch

@@ -1,0 +1,51 @@
+From: "Dr. Tobias Quathamer" <toddy@debian.org>
+Date: Tue, 4 Dec 2018 22:53:21 +0100
+Subject: Disable FTP server of rclone
+
+---
+ cmd/serve/ftp/ftp.go             | 4 ++--
+ cmd/serve/ftp/ftp_test.go        | 4 ++--
+ cmd/serve/ftp/ftp_unsupported.go | 3 ---
+ 3 files changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/cmd/serve/ftp/ftp.go b/cmd/serve/ftp/ftp.go
+index 2023ba8..e320bf9 100644
+--- a/cmd/serve/ftp/ftp.go
++++ b/cmd/serve/ftp/ftp.go
+@@ -1,5 +1,5 @@
+-//go:build !plan9
+-// +build !plan9
++//go:build ignore
++// +build ignore
+ 
+ // Package ftp implements an FTP server for rclone
+ package ftp
+diff --git a/cmd/serve/ftp/ftp_test.go b/cmd/serve/ftp/ftp_test.go
+index 6ac0d34..f722b47 100644
+--- a/cmd/serve/ftp/ftp_test.go
++++ b/cmd/serve/ftp/ftp_test.go
+@@ -3,8 +3,8 @@
+ //
+ // We skip tests on platforms with troublesome character mappings
+ 
+-//go:build !windows && !darwin && !plan9
+-// +build !windows,!darwin,!plan9
++//go:build ignore
++// +build ignore
+ 
+ package ftp
+ 
+diff --git a/cmd/serve/ftp/ftp_unsupported.go b/cmd/serve/ftp/ftp_unsupported.go
+index 05ad78a..60ece32 100644
+--- a/cmd/serve/ftp/ftp_unsupported.go
++++ b/cmd/serve/ftp/ftp_unsupported.go
+@@ -1,9 +1,6 @@
+ // Build  for unsupported platforms to stop go complaining
+ // about "no buildable Go source files "
+ 
+-//go:build plan9
+-// +build plan9
+-
+ package ftp
+ 
+ import "github.com/spf13/cobra"

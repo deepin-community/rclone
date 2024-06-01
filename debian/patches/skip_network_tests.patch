@@ -1,0 +1,29 @@
+From: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Date: Fri, 27 Nov 2020 02:06:23 +0800
+Subject: skip_network_tests
+
+===================================================================
+---
+ fs/rc/webgui/rc_test.go | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/fs/rc/webgui/rc_test.go b/fs/rc/webgui/rc_test.go
+index 4ba6b5c..7b4602d 100644
+--- a/fs/rc/webgui/rc_test.go
++++ b/fs/rc/webgui/rc_test.go
+@@ -88,6 +88,7 @@ func removePlugin(t *testing.T) {
+ //}
+ 
+ func TestAddPlugin(t *testing.T) {
++	t.Skip("network connection not available for testing")
+ 	cacheDir := setCacheDir(t)
+ 	defer cleanCacheDir(t, cacheDir)
+ 
+@@ -117,6 +118,7 @@ func TestListPlugins(t *testing.T) {
+ }
+ 
+ func TestRemovePlugin(t *testing.T) {
++	t.Skip("network connection not available for testing")
+ 	cacheDir := setCacheDir(t)
+ 	defer cleanCacheDir(t, cacheDir)
+ 

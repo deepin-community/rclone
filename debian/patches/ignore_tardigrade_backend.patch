@@ -1,0 +1,71 @@
+From: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Date: Fri, 27 Nov 2020 02:06:23 +0800
+Subject: ignore_tardigrade_backend
+
+===================================================================
+---
+ backend/all/all.go      | 1 -
+ backend/storj/fs.go     | 4 ++--
+ backend/storj/object.go | 4 ++--
+ go.mod                  | 1 -
+ go.sum                  | 2 --
+ 5 files changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/backend/all/all.go b/backend/all/all.go
+index 8185da1..b1e9556 100644
+--- a/backend/all/all.go
++++ b/backend/all/all.go
+@@ -43,7 +43,6 @@ import (
+ 	_ "github.com/rclone/rclone/backend/sharefile"
+ 	_ "github.com/rclone/rclone/backend/sia"
+ 	_ "github.com/rclone/rclone/backend/smb"
+-	_ "github.com/rclone/rclone/backend/storj"
+ 	_ "github.com/rclone/rclone/backend/sugarsync"
+ 	_ "github.com/rclone/rclone/backend/swift"
+ 	_ "github.com/rclone/rclone/backend/union"
+diff --git a/backend/storj/fs.go b/backend/storj/fs.go
+index b39e0b2..1c0f432 100644
+--- a/backend/storj/fs.go
++++ b/backend/storj/fs.go
+@@ -1,5 +1,5 @@
+-//go:build !plan9
+-// +build !plan9
++//go:build ignore
++// +build ignore
+ 
+ // Package storj provides an interface to Storj decentralized object storage.
+ package storj
+diff --git a/backend/storj/object.go b/backend/storj/object.go
+index 9bb6e67..e7e0c09 100644
+--- a/backend/storj/object.go
++++ b/backend/storj/object.go
+@@ -1,5 +1,5 @@
+-//go:build !plan9
+-// +build !plan9
++//go:build ignore
++// +build ignore
+ 
+ package storj
+ 
+diff --git a/go.mod b/go.mod
+index b7aecb2..eb6a180 100644
+--- a/go.mod
++++ b/go.mod
+@@ -70,7 +70,6 @@ require (
+ 	golang.org/x/time v0.0.0-20220722155302-e5dcc9cfc0b9
+ 	google.golang.org/api v0.91.0
+ 	gopkg.in/yaml.v2 v2.4.0
+-	storj.io/uplink v1.9.0
+ )
+ 
+ require (
+diff --git a/go.sum b/go.sum
+index be4dc9e..2dedcfb 100644
+--- a/go.sum
++++ b/go.sum
+@@ -1248,5 +1248,3 @@ storj.io/common v0.0.0-20220414110316-a5cb7172d6bf h1:D5xZTDOlTTQWdAWeKKm2pFLcz1
+ storj.io/common v0.0.0-20220414110316-a5cb7172d6bf/go.mod h1:LBJrpAqL4MNSrhGEwc8SJ+tIVtgfCtFEZqDy6/0j67A=
+ storj.io/drpc v0.0.30 h1:jqPe4T9KEu3CDBI05A2hCMgMSHLtd/E0N0yTF9QreIE=
+ storj.io/drpc v0.0.30/go.mod h1:6rcOyR/QQkSTX/9L5ZGtlZaE2PtXTTZl8d+ulSeeYEg=
+-storj.io/uplink v1.9.0 h1:Zg1kX1VqOQIKm0yAukteKpLuT68Be3euyNRML612ERM=
+-storj.io/uplink v1.9.0/go.mod h1:f6D8306j5mnRHnPDKWCiwtPM6ukyGg77to9LaAY9l6k=

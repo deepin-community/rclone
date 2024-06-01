@@ -1,0 +1,125 @@
+From: Matthew Vernon <mvernon@wikimedia.org>
+Date: Fri, 25 Nov 2022 16:41:39 +0000
+Subject: Disable oracleobjectstorage backend
+
+...because it adds a pile of new build-deps
+---
+ backend/all/all.go                                      | 1 -
+ backend/oracleobjectstorage/client.go                   | 4 ++--
+ backend/oracleobjectstorage/command.go                  | 4 ++--
+ backend/oracleobjectstorage/copy.go                     | 4 ++--
+ backend/oracleobjectstorage/object.go                   | 4 ++--
+ backend/oracleobjectstorage/options.go                  | 4 ++--
+ backend/oracleobjectstorage/oracleobjectstorage.go      | 4 ++--
+ backend/oracleobjectstorage/oracleobjectstorage_test.go | 4 ++--
+ backend/oracleobjectstorage/waiter.go                   | 4 ++--
+ 9 files changed, 16 insertions(+), 17 deletions(-)
+
+diff --git a/backend/all/all.go b/backend/all/all.go
+index b1e9556..8fea30a 100644
+--- a/backend/all/all.go
++++ b/backend/all/all.go
+@@ -33,7 +33,6 @@ import (
+ 	_ "github.com/rclone/rclone/backend/netstorage"
+ 	_ "github.com/rclone/rclone/backend/onedrive"
+ 	_ "github.com/rclone/rclone/backend/opendrive"
+-	_ "github.com/rclone/rclone/backend/oracleobjectstorage"
+ 	_ "github.com/rclone/rclone/backend/pcloud"
+ 	_ "github.com/rclone/rclone/backend/premiumizeme"
+ 	_ "github.com/rclone/rclone/backend/putio"
+diff --git a/backend/oracleobjectstorage/client.go b/backend/oracleobjectstorage/client.go
+index b5dee80..a1bfc4e 100644
+--- a/backend/oracleobjectstorage/client.go
++++ b/backend/oracleobjectstorage/client.go
+@@ -1,5 +1,5 @@
+-//go:build !plan9 && !solaris && !js
+-// +build !plan9,!solaris,!js
++//go:build ignore
++// +build ignore
+ 
+ package oracleobjectstorage
+ 
+diff --git a/backend/oracleobjectstorage/command.go b/backend/oracleobjectstorage/command.go
+index 6e0c7e1..702a9eb 100644
+--- a/backend/oracleobjectstorage/command.go
++++ b/backend/oracleobjectstorage/command.go
+@@ -1,5 +1,5 @@
+-//go:build !plan9 && !solaris && !js
+-// +build !plan9,!solaris,!js
++//go:build ignore
++// +build ignore
+ 
+ package oracleobjectstorage
+ 
+diff --git a/backend/oracleobjectstorage/copy.go b/backend/oracleobjectstorage/copy.go
+index 9ed0b76..16250ca 100644
+--- a/backend/oracleobjectstorage/copy.go
++++ b/backend/oracleobjectstorage/copy.go
+@@ -1,5 +1,5 @@
+-//go:build !plan9 && !solaris && !js
+-// +build !plan9,!solaris,!js
++//go:build ignore
++// +build ignore
+ 
+ package oracleobjectstorage
+ 
+diff --git a/backend/oracleobjectstorage/object.go b/backend/oracleobjectstorage/object.go
+index d9f8479..32b2a33 100644
+--- a/backend/oracleobjectstorage/object.go
++++ b/backend/oracleobjectstorage/object.go
+@@ -1,5 +1,5 @@
+-//go:build !plan9 && !solaris && !js
+-// +build !plan9,!solaris,!js
++//go:build ignore
++// +build ignore
+ 
+ package oracleobjectstorage
+ 
+diff --git a/backend/oracleobjectstorage/options.go b/backend/oracleobjectstorage/options.go
+index 9e7e65f..7d04357 100644
+--- a/backend/oracleobjectstorage/options.go
++++ b/backend/oracleobjectstorage/options.go
+@@ -1,5 +1,5 @@
+-//go:build !plan9 && !solaris && !js
+-// +build !plan9,!solaris,!js
++//go:build ignore
++// +build ignore
+ 
+ package oracleobjectstorage
+ 
+diff --git a/backend/oracleobjectstorage/oracleobjectstorage.go b/backend/oracleobjectstorage/oracleobjectstorage.go
+index 6f730f2..f9030d9 100644
+--- a/backend/oracleobjectstorage/oracleobjectstorage.go
++++ b/backend/oracleobjectstorage/oracleobjectstorage.go
+@@ -1,5 +1,5 @@
+-//go:build !plan9 && !solaris && !js
+-// +build !plan9,!solaris,!js
++//go:build ignore
++// +build ignore
+ 
+ // Package oracleobjectstorage provides an interface to the OCI object storage system.
+ package oracleobjectstorage
+diff --git a/backend/oracleobjectstorage/oracleobjectstorage_test.go b/backend/oracleobjectstorage/oracleobjectstorage_test.go
+index 479da7b..f107e54 100644
+--- a/backend/oracleobjectstorage/oracleobjectstorage_test.go
++++ b/backend/oracleobjectstorage/oracleobjectstorage_test.go
+@@ -1,5 +1,5 @@
+-//go:build !plan9 && !solaris && !js
+-// +build !plan9,!solaris,!js
++//go:build ignore
++// +build ignore
+ 
+ package oracleobjectstorage
+ 
+diff --git a/backend/oracleobjectstorage/waiter.go b/backend/oracleobjectstorage/waiter.go
+index d241ff8..d9c7af1 100644
+--- a/backend/oracleobjectstorage/waiter.go
++++ b/backend/oracleobjectstorage/waiter.go
+@@ -1,5 +1,5 @@
+-//go:build !plan9 && !solaris && !js
+-// +build !plan9,!solaris,!js
++//go:build ignore
++// +build ignore
+ 
+ package oracleobjectstorage
+ 
