@@ -1,0 +1,3 @@
+# The rclone manual is auto-generated during the build, it's not
+# entirely pretty.
+rclone: groff-message

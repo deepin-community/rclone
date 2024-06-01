@@ -1,0 +1,20 @@
+From: "Dr. Tobias Quathamer" <toddy@debian.org>
+Date: Mon, 7 May 2018 14:11:13 +0200
+Subject: Disable mega backend
+
+---
+ backend/all/all.go | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/backend/all/all.go b/backend/all/all.go
+index 3cef6c9..8185da1 100644
+--- a/backend/all/all.go
++++ b/backend/all/all.go
+@@ -29,7 +29,6 @@ import (
+ 	_ "github.com/rclone/rclone/backend/koofr"
+ 	_ "github.com/rclone/rclone/backend/local"
+ 	_ "github.com/rclone/rclone/backend/mailru"
+-	_ "github.com/rclone/rclone/backend/mega"
+ 	_ "github.com/rclone/rclone/backend/memory"
+ 	_ "github.com/rclone/rclone/backend/netstorage"
+ 	_ "github.com/rclone/rclone/backend/onedrive"

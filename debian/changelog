@@ -1,5 +1,364 @@
-template-repository (1.0-1) unstable; urgency=medium
+rclone (1.60.1+dfsg-3) unstable; urgency=medium
 
-  * Initial release
+  * Team upload.
+  * Disable dh_auto_test on single-CPU machines. Closes: #1031062.
+  * Add ca-certificates to Suggests. Closes: #1031358.
+  * debian/copyright: use spaces rather than tabs to start continuation lines.
+  * Update standards version to 4.6.2, no changes needed.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Santiago Vila <sanvila@debian.org>  Mon, 06 Nov 2023 14:54:00 +0100
+
+rclone (1.60.1+dfsg-2) unstable; urgency=medium
+
+  * Tighten Build-Dependencies
+
+ -- Matthew Vernon <matthew@debian.org>  Tue, 13 Dec 2022 15:16:12 +0000
+
+rclone (1.60.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream version (Closes: #1001261, #991124)
+  * Exclude website components w/o source
+  * Update d/copyright to reflect all code licenses
+  * Add Suggests: fuse | fuse3 (Closes: #1018089)
+  * Lintian overrides where necessary
+  * Rebase patches
+
+ -- Matthew Vernon <matthew@debian.org>  Wed, 07 Dec 2022 18:04:19 +0000
+
+rclone (1.53.3-4) unstable; urgency=medium
+
+  * Team upload.
+  * Add logrus to the dependencies of the development package.
+  * Switch to dh-sequence-*.
+  * Add missing build dependency on go-homedir.
+
+ -- Andrej Shadura <andrewsh@debian.org>  Fri, 31 Dec 2021 21:12:35 +0100
+
+rclone (1.53.3-3) unstable; urgency=medium
+
+  * Team upload.
+  * Add missing build dependency on logrus (Closes: #1002271).
+
+ -- Andrej Shadura <andrewsh@debian.org>  Fri, 31 Dec 2021 20:37:35 +0100
+
+rclone (1.53.3-2) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Thomas Goirand ]
+  * Add "Infomaniak kDrive" as possible provider in the package long desc.
+
+  [ Debian Janitor ]
+  * Remove constraints unnecessary since buster:
+    + Build-Depends: Drop versioned constraint on
+      golang-github-jlaffaye-ftp-dev.
+    + golang-github-rclone-rclone-dev: Drop versioned constraint on
+      golang-github-jlaffaye-ftp-dev and golang-github-okzk-sdnotify-dev in
+      Depends.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+  * Update standards version to 4.6.0, no changes needed.
+
+  [ Andrej Shadura ]
+  * Backport fix for upstream issue #5632 (move operation for union mounts)
+  * Don’t set XDG_{CONFIG,CACHE}_HOME since debhelper already does.
+  * Don’t fail to build when tests fail, since there are spurious failures.
+
+ -- Andrej Shadura <andrewsh@debian.org>  Sun, 31 Oct 2021 10:56:03 +0100
+
+rclone (1.53.3-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version 1.53.3
+    Closes: #975324 CVE-2020-28924
+  * Bump debhelper-compat to 13
+  * Bump Standards-Version to 4.5.1 (no changes)
+  * Change devel package Section to golang
+
+ -- Shengjing Zhu <zhsj@debian.org>  Fri, 27 Nov 2020 02:07:54 +0800
+
+rclone (1.53.1-2) unstable; urgency=medium
+
+  * Team upload.
+  * upload to unstable
+
+ -- Drew Parsons <dparsons@debian.org>  Fri, 02 Oct 2020 23:46:28 +0800
+
+rclone (1.53.1-1) experimental; urgency=medium
+
+  * Team upload.
+  * New upstream release. Closes: #960677.
+    - fixes getcwd() failures. Closes: #968320.
+  * adds new Build-Depends:
+    - golang-github-aalpar-deheap-dev (>= 0.0~git20200318.9a0c288)
+    - golang-github-coreos-go-semver-dev (>= 0.3.0)
+    - golang-github-hanwen-go-fuse-dev (>= 2.0.3)
+    - golang-github-klauspost-compress-dev (>= 1.10.11)
+  * update existing versioned dependencies
+  * also Build-Depends: golang-github-google-uuid-dev
+  * vendor and Godeps subdirs no longer packaged in upstream tarball,
+    no need to exclude in debian/copyright or repack in watch file
+  * update debian/watch to https://github.com/rclone/rclone
+  * run tests in "quicktest" mode (RCLONE_CONFIG="/notfound") to avoid
+    live server connections in backend TestIntegration
+  * add debian patches
+    - ignore_tardigrade_backend.patch ignores the tardigrade backend
+      (storj.io/uplink is not yet available, see RFP#971078)
+    - skip_TestParseDuration.patch skips TestParseDuration due to
+      errors on Linux, see https://github.com/rclone/rclone/issues/4529
+    - skip_sftp_webdav_TestIntegration.patch skips the TestIntegration
+      test on sftp and webdav backends (they don't recognise quicktest mode)
+    - skip_network_tests.patch skips TestAddPlugin and
+      TestRemovePlugin in tests for fs/rc/webgui (network connections
+      are not available for build tests)
+  * ensure source gocode in golang-github-rclone-rclone-dev is not
+    executable
+  * add hyphen to NAME in manpage for proper parsing
+  * use dh_installdocs and dh_installman to install docs.
+    Predownload logo_on_light__horizontal_color.svg from
+    https://rclone.org/img/logo_on_light__horizontal_color.svg and
+    place in doc dir for MANUAL.html.
+  * delete generated doc files when cleaning
+
+ -- Drew Parsons <dparsons@debian.org>  Wed, 30 Sep 2020 00:05:13 +0800
+
+rclone (1.50.2-3) unstable; urgency=medium
+
+  * Team upload.
+  * Fix missing Build-Depends
+    + golang-github-mattn-go-colorable-dev
+    It's previously brought by golang-github-spf13-viper-dev
+  * Update maintainer address to team+pkg-go@tracker.debian.org
+  * Add Rules-Requires-Root
+
+ -- Shengjing Zhu <zhsj@debian.org>  Thu, 25 Jun 2020 03:57:45 +0800
+
+rclone (1.50.2-2) unstable; urgency=medium
+
+  * Team upload.
+  * mark usr/bin/build_csv as not-installed
+    (it is an internal tool associated with rclone's info command)
+
+ -- Drew Parsons <dparsons@debian.org>  Thu, 30 Jan 2020 12:14:40 +0800
+
+rclone (1.50.2-1) experimental; urgency=medium
+
+  * Team upload.
+  * New upstream release.
+    - applies 0006-Adapt-script-to-use-python3.patch
+    - Build-Depends:
+        golang-github-azure-azure-pipeline-go-dev (>= 0.2.2),
+        golang-github-youmark-pkcs8-dev
+  * Standards-Version: 4.5.0
+
+ -- Drew Parsons <dparsons@debian.org>  Wed, 22 Jan 2020 10:19:27 +0800
+
+rclone (1.49.5-3) unstable; urgency=medium
+
+  * Source-only upload.
+
+ -- Dr. Tobias Quathamer <toddy@debian.org>  Tue, 29 Oct 2019 21:22:48 +0100
+
+rclone (1.49.5-2) unstable; urgency=medium
+
+  * No change upload to build against golang-github-jzelinskie-whirlpool-dev,
+    version 0.0~git20170603.c19460b-2. The previous upload has been rejected
+    because the field Built-Using referred to the -1 version of that package,
+    which is no longer available in the ftp-master archive.
+
+ -- Dr. Tobias Quathamer <toddy@debian.org>  Mon, 28 Oct 2019 20:56:23 +0100
+
+rclone (1.49.5-1) unstable; urgency=medium
+
+  [ Drew Parsons ]
+  * update debian/copyright, debian/watch to stop excluding
+    cmd/serve/dlna.
+
+  [ Dr. Tobias Quathamer ]
+  * New upstream version 1.49.5
+    - Refresh patches
+    - Remove patches which have been applied upstream
+    - Rename -dev package to new upstream namespace
+    - Add golang-github-atotto-clipboard-dev to Build-Depends
+    - Add two new dependencies
+    - Update bash completion for new release
+    - Remove <script> to disable possible privacy breach
+  * Update Standards-Version to 4.4.1, no changes needed
+  * Remove README.Debian, is no longer relevant
+  * Do not include installation instructions in manpage. (Closes: #941209)
+    - Remove patch for manpage, is now obsolete
+    - New patch for manpage
+    - Add pandoc and python3 to Build-Depends
+  * Add three test binaries to d/not-installed
+
+ -- Dr. Tobias Quathamer <toddy@debian.org>  Fri, 18 Oct 2019 00:57:22 +0200
+
+rclone (1.47.0+ex1-7) unstable; urgency=medium
+
+  * Team upload.
+  * debian patch reinstate_dlna.patch reinstates support for DLNA
+    servers (via dms). Drop disable_dlna.patch.
+    Build-Depends: golang-github-anacrolix-dms-dev
+
+ -- Drew Parsons <dparsons@debian.org>  Thu, 12 Sep 2019 00:49:23 +0800
+
+rclone (1.47.0+ex1-6) unstable; urgency=medium
+
+  * Team upload.
+  * Standards-Version: 4.4.0
+  * debhelper compatibility level 12
+  * debian patch update_koofr_API_a35aa1360.patch applies upstream
+    commit a35aa1360 updating for latest koofr API.
+
+ -- Drew Parsons <dparsons@debian.org>  Thu, 01 Aug 2019 13:15:25 +0800
+
+rclone (1.47.0+ex1-5) experimental; urgency=medium
+
+  * Team upload.
+  * allow 20 min for mips64el mipsel to complete TestTestsToRegexpLive
+
+ -- Drew Parsons <dparsons@debian.org>  Sat, 11 May 2019 18:08:39 +0800
+
+rclone (1.47.0+ex1-4) experimental; urgency=medium
+
+  * Team upload.
+  * define dummy subdir ($CURDIR)/buildtest to use as home and cache
+    for build-time tests
+
+ -- Drew Parsons <dparsons@debian.org>  Sat, 11 May 2019 15:49:20 +0800
+
+rclone (1.47.0+ex1-3) experimental; urgency=medium
+
+  * Team upload.
+  * Versioned Depends: golang-github-ncw-swift-dev (>= 1.0.47)
+
+ -- Drew Parsons <dparsons@debian.org>  Tue, 07 May 2019 14:47:31 +0800
+
+rclone (1.47.0+ex1-2) experimental; urgency=medium
+
+  * Team upload.
+  * Depends, Build-Depends:
+      golang-github-koofr-go-httpclient-dev
+      golang-github-koofr-go-koofrclient-dev
+
+ -- Drew Parsons <dparsons@debian.org>  Tue, 07 May 2019 13:50:41 +0800
+
+rclone (1.47.0+ex1-1) experimental; urgency=medium
+
+  * Team upload.
+  * New upstream version 1.47.0. Closes: #924745.
+    - supports symlinks
+    - supports DLNA servers (but support is disabled)
+    - versioned dependencies:
+      golang-github-abbot-go-http-auth-dev (>= 0.4.0)
+      golang-github-dropbox-dropbox-sdk-go-unofficial-dev (>= 5.4.0)
+      golang-google-api-dev (>= 0.1.0)
+  * Debian patch disable_dlna.patch disables support for DLNA servers,
+    since github/anacrolix/dms is not currently available in Debian.
+    - exclude cmd/serve/dlna in debian/watch (repack as version "+ex1")
+
+ -- Drew Parsons <dparsons@debian.org>  Tue, 07 May 2019 11:11:01 +0800
+
+rclone (1.45-3) unstable; urgency=medium
+
+  * d/rules: increase test timeout.
+    Some architectures like mips are slow to run test
+
+ -- Shengjing Zhu <zhsj@debian.org>  Mon, 10 Jun 2019 02:22:04 +0800
+
+rclone (1.45-2) unstable; urgency=medium
+
+  * Add versioned Build-Depends.
+    The recent upload of golang-github-okzk-sdnotify makes
+    the older version of rclone (in testing) FTBFS.
+    Thanks to Paul Gevers <elbrus@debian.org> (Closes: #915907)
+  * Disable autopkgtest-pkg-go
+
+ -- Dr. Tobias Quathamer <toddy@debian.org>  Wed, 12 Dec 2018 09:40:34 +0100
+
+rclone (1.45-1) unstable; urgency=medium
+
+  * New upstream version 1.45. Closes: #903202
+    - Refresh patches
+    - New patch to disable FTP server of rclone.
+      The Build-Dependency is not available in Debian yet.
+    - Update dependencies
+    - Ignore two more failing tests
+    - Include another testdata directory
+    - Update bash completion script
+  * Remove Built-Using from -dev package
+  * Remove Priority from -dev package
+  * Update Standards-Version to 4.2.1, no changes needed
+
+ -- Dr. Tobias Quathamer <toddy@debian.org>  Wed, 05 Dec 2018 21:53:01 +0100
+
+rclone (1.41-1) unstable; urgency=medium
+
+  [ Dr. Tobias Quathamer ]
+  * New upstream version 1.41. Closes: #877859
+    - Refresh patches
+    - New patch to disable possible privacy breach
+    - Skip failing tests for now
+    - Add new build dependencies
+    - Update bash completion for rclone
+    - Do not build qingstor and mega backends for now.
+      The required go packages are not available in Debian yet.
+  * Run wrap-and-sort
+  * Use debhelper v11
+  * Update to Standards-Version 4.1.4
+    - Use Priority: optional
+  * Update d/copyright
+  * Update d/rules
+  * Add lintian override for wrongly detected privacy breach
+
+  [ Alexandre Viau ]
+  * Point Vcs-* urls to salsa.debian.org
+
+ -- Dr. Tobias Quathamer <toddy@debian.org>  Sun, 13 May 2018 00:11:46 +0200
+
+rclone (1.36-3) unstable; urgency=medium
+
+  * Team upload.
+  * Add missing build-dep golang-github-pkg-sftp-dev
+
+ -- Michael Stapelberg <stapelberg@debian.org>  Sun, 30 Jul 2017 19:42:48 +0200
+
+rclone (1.36-2) unstable; urgency=medium
+
+  * Add 0004-Fix-test-failure.patch to fix FTBFS (Closes: #869376)
+
+ -- Michael Stapelberg <stapelberg@debian.org>  Sun, 23 Jul 2017 22:11:42 +0200
+
+rclone (1.36-1) unstable; urgency=medium
+
+  * New upstream version 1.36
+    - Refresh patches
+  * Use autopkgtest-pkg-go
+  * Update d/copyright
+  * Update to Standards-Version 4.0.0
+
+ -- Dr. Tobias Quathamer <toddy@debian.org>  Mon, 03 Jul 2017 13:33:56 +0200
+
+rclone (1.35-1) unstable; urgency=medium
+
+  * Imported Upstream version 1.35
+  * Refresh patches
+  * Update bash completion script with new commands
+
+ -- Dr. Tobias Quathamer <toddy@debian.org>  Tue, 03 Jan 2017 16:56:28 +0100
+
+rclone (1.34-2) unstable; urgency=medium
+
+  * Add rules for repackaging to d/copyright and d/watch
+  * Replace golang-golang-x-oauth2-dev with golang-golang-x-oauth2-google-dev.
+    Thanks to Aaron M. Ucko <amu@alum.mit.edu> (Closes: #846037)
+  * Build-Depend on golang-any instead of golang-go
+  * Add bash-completion script generated by rclone
+
+ -- Dr. Tobias Quathamer <toddy@debian.org>  Mon, 28 Nov 2016 17:53:27 +0100
+
+rclone (1.34-1) unstable; urgency=medium
+
+  * Initial release (Closes: #822793)
+
+ -- Dr. Tobias Quathamer <toddy@debian.org>  Sat, 12 Nov 2016 17:33:16 +0100

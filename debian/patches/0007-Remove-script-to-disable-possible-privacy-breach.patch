@@ -1,0 +1,17 @@
+From: "Dr. Tobias Quathamer" <toddy@debian.org>
+Date: Fri, 18 Oct 2019 00:54:28 +0200
+Subject: Remove <script> to disable possible privacy breach
+
+---
+ docs/content/commands/rclone_ncdu.md | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/docs/content/commands/rclone_ncdu.md b/docs/content/commands/rclone_ncdu.md
+index 154eb21..0261e71 100644
+--- a/docs/content/commands/rclone_ncdu.md
++++ b/docs/content/commands/rclone_ncdu.md
+@@ -86,4 +86,3 @@ See the [global flags page](/flags/) for global options not listed here.
+ ## SEE ALSO
+ 
+ * [rclone](/commands/rclone/)	 - Show help for rclone commands, flags and backends.
+-
